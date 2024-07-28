@@ -1,4 +1,5 @@
 from extract_from_transcript import *
+import json
 
 courses = (extract_all_information())[2]
 passed_courses = [course for course, is_true in courses if is_true]
@@ -45,7 +46,7 @@ def table_1_check(courses):
         courses.remove(table_1_status[0])
     table_2_status = list(set(table_1[1]).intersection(set(courses)))
     if (len(table_1_status) > 0) and (len(table_2_status) > 0):
-        return []
+        return [[]]
     if (len(table_1_status) == 0) and (len(table_2_status) == 0):
         return [list_1,list_2]
     if (len(table_1_status) > 0) and (len(table_2_status) == 0):
@@ -101,17 +102,17 @@ print(table_1_check(passed_courses))
 print("Missing from list 2")
 print(math_studies_check(passed_courses))
 
-# ## Actuarial Science
-# actuarial_science = [calculus_3] + ["AFM 101","ACTSC 231","ACTSC 232","ACTSC 331","ACTSC 371","ACTSC 431","ACTSC 446","AMATH 250","ECON 101","ECON 102","ENGL 378","MTHEL 300","MTHEL 131","STAT 330","STAT 331","STAT 333"]
-# actuarial_science = actuarial_science + [["STAT 340", "STAT 341"]] + [["ACTSC 4XX","ACTSC 4XX"]]
-# actuarial_science = actuarial_science + [["ACTSC 3XX", "ACTSC 4XX", "AFM 424", "STAT 431", "STAT 433", "STAT 441", "STAT 443", "MATH 3XX or 4XX"]]
-# ## Need at least 26 Math courses
+data = {
+    "list_1": table_1_check(passed_courses),
+    "major_requirements": (math_studies_check(passed_courses))
+}
 
-# ## Applied Mathematics
-# applied_math = [calculus_3] + ["AMATH 231","AMATH 242","CS 371" ,"AMATH 251" ,"AMATH 332","AMATH 342","AMATH 351","AMATH","PHYS 121"]
-# applied_math = applied_math + [["AMATH 4XX","AMATH 4XX","AMATH 4XX"]]
-# applied_math = applied_math + [["AMATH 3XX","AMATH 4XX"]]
-# applied_math = applied_math + [["5 math courses"]]
-# # print(applied_math)
-# ## Need at least 26 Math courses
+json_string = json.dumps(data)
+print(json_string)
+
+file_path = 'missing_courses.json'
+
+# Write the dictionary to a file as JSON
+with open(file_path, 'w') as json_file:
+    json.dump(data, json_file)
 
