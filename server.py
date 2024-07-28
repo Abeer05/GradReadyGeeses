@@ -22,6 +22,7 @@ def upload_file():
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(path)
     print(path)
+    print(math_studies_check.return_missing_courses(path))
     # print(extract_from_transcript.extract_all_information(path))
 
     return jsonify({'message': 'File successfully uploaded'}), 200
