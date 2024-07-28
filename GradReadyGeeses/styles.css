@@ -1,3 +1,4 @@
+/* First CSS */
 .center {
   display: flex;
   flex-direction: column;
@@ -77,4 +78,76 @@ button {
 
 #input {
   display: none;
+}
+
+/* Second CSS */
+body {
+  background-color: #1E1C1C;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.eligible {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+img {
+  margin-bottom: 30px;
+}
+
+p {
+  margin-top: 30px;
+}
+
+.highlight {
+  color: #00FF0D;
+}
+
+a {
+  color: #00FF0D;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.eligible {
+  text-align: center;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 30px;
+}
+
+img {
+  margin-bottom: 30px;
+}
+
+p {
+  margin-top: 30px;
+}
+
+.highlight {
+  color: #00FF0D;
+}
+
+a {
+  color: #00FF0D;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
