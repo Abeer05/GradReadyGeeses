@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import os
 import extract_from_transcript
+import math_studies_check
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads/'
@@ -21,7 +22,7 @@ def upload_file():
     path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
     file.save(path)
     print(path)
-    print(extract_from_transcript.extract_all_information(path))
+    # print(extract_from_transcript.extract_all_information(path))
 
     return jsonify({'message': 'File successfully uploaded'}), 200
 

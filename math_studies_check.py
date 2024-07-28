@@ -1,8 +1,7 @@
 from extract_from_transcript import *
 import json
 
-courses = (extract_all_information())[2]
-passed_courses = [course for course, is_true in courses if is_true]
+
 
 math_course = ["ACTSC", "AMATH", "CO", "CS", "MATBUS", "MATH", "PMATH","STAT"]
 
@@ -96,23 +95,26 @@ def math_studies_check(courses):
     ans = [cs1, cs2, alg, lin_alg_1, lin_alg_2, calc_1, calc_2, calc_co,stats_1,stats_2]
     filtered = [lst for lst in ans if lst]
     return filtered
+def return_missing_courses(path):
+    courses = (extract_all_information(path))[2]
+    passed_courses = [course for course, is_true in courses if is_true]
+    # print("Missing from list 1")
+    table_1_check(passed_courses)
+    # print("Missing from list 2")
+    math_studies_check(passed_courses)
 
-print("Missing from list 1")
-print(table_1_check(passed_courses))
-print("Missing from list 2")
-print(math_studies_check(passed_courses))
+    data = {
+        "list_1": table_1_check(passed_courses),
+        "major_requirements": (math_studies_check(passed_courses))
+    }
 
-data = {
-    "list_1": table_1_check(passed_courses),
-    "major_requirements": (math_studies_check(passed_courses))
-}
+    json_string = json.dumps(data)
+    # print(json_string)
 
-json_string = json.dumps(data)
-print(json_string)
+    file_path = 'missing_courses.json'
 
-file_path = 'missing_courses.json'
-
-# Write the dictionary to a file as JSON
-with open(file_path, 'w') as json_file:
-    json.dump(data, json_file)
+    # Write the dictionary to a file as JSON
+    with open(file_path, 'w') as json_file:
+        json.dump(data, json_file)
+    return json_string
 
