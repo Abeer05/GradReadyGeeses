@@ -3,9 +3,9 @@ from pypdf import PdfReader
 
 
         
-def get_all_lines():
+def get_all_lines(path):
     output = []
-    reader = PdfReader("/Users/apple/Downloads/SSR_TSRPT.pdf")
+    reader = PdfReader(path)
     number_of_pages = len(reader.pages)
 
     for i in range(number_of_pages):
@@ -41,8 +41,8 @@ def check_is_program(row):
     return 'Program:' in row
 def extract_name_or_program(row):
     return ''.join(row.split()[1:])
-def extract_all_information():
-    output_lines = get_all_lines()
+def extract_all_information(path):
+    output_lines = get_all_lines(path)
     course_map = {}
     name = ''
     program = ''
@@ -59,6 +59,6 @@ def extract_all_information():
             
             continue
     
-    return(name, program,list(course_map.items()) )
+    return(name, program,list(course_map.items()))
 
 
