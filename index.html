@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+HR:wght@100..400&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/81c844565e.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>Grad Ready Geese!</title>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="main">
+      <div class="center">
+        <span class="title">Grad Ready Geese!</span>
+        <img class="logo" src="img/logo.png" />
+        <span class="subtitle">
+          Upload your transcript to see if you can graduate and which courses
+          you still need.
+        </span>
+        <select class="dropdown">
+          <option value="" disabled selected>Choose your program</option>
+          <option value="program1">Actuarial Science</option>
+          <option value="program2">Computer Science</option>
+          <option value="program3">Combinatorics and Optimization</option>
+          <option value="program4">Data Science</option>
+          <option value="program5">Mathematical Finance</option>
+          <option value="program6">Statistics</option>
+        </select>
+        <button onclick="document.getElementById('input').click()">
+          <img class="plus" src="img/plus.png" />
+          <input type="file" id="input" accept="application/pdf" />
+        </button>
+        <span class="upload">Upload Your Transcript</span>
+      </div>
+    </div>
+    <div id="congrats" class="hidden">
+      <div class="center">
+        <h1>
+          Congratulations, you are <span class="highlight">eligible</span> to
+          graduate!
+        </h1>
+        <img src="img/checkmark.png" alt="Checkmark" />
+        <p>
+          For next steps, visit the
+          <a
+            href="https://uwaterloo.ca/registrar/graduation-and-convocation#step2"
+            >graduation and convocation checklist</a
+          >
+        </p>
+      </div>
+    </div>
+    <div id="illegible" class="hidden">
+      <div class="center">
+        <h1>You are <span class="highlight">not eligible</span></h1>
+        <h2>
+          You need <span id="coursesNeeded" class="highlight">0</span> more
+          courses to graduate
+        </h2>
+
+        <div id="majorSpecificCourses" class="course-section">
+          <div class="section-title">Major Specific Courses</div>
+        </div>
+
+        <div id="table1Courses" class="course-section">
+          <div class="section-title">List 1 Courses</div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
